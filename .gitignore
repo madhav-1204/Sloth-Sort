@@ -10,3 +10,4 @@ undo_log.json
 .venv/
 venv/
 messy_test_dir/
+demo_folder/

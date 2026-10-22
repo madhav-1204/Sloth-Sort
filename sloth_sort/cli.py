@@ -107,6 +107,9 @@ def run_plan(args: argparse.Namespace) -> int:
         print("No files eligible for sorting.")
         return 0
 
+    if args.limit and args.limit > 0:
+        eligible = eligible[: args.limit]
+
     print(f"Found {len(eligible)} files to analyze.\n")
 
     try:
@@ -225,6 +228,12 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=None,
         help="Cooldown threshold in seconds for recent file modifications (default: 600).",
+    )
+    plan_parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Maximum number of files to process in this run.",
     )
 
     # apply command
