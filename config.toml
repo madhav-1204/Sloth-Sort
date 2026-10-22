@@ -1,0 +1,23 @@
+[model]
+name = "gemma3:1b"
+endpoint = "http://127.0.0.1:11434"
+
+[categories]
+# Fixed list of target folders to avoid the model inventing arbitrary directories
+allowed = [
+    "Invoices",
+    "Study",
+    "Photos",
+    "Installers",
+    "Code",
+    "Documents",
+    "Media",
+    "Misc"
+]
+fallback = "Misc"
+
+[scanner]
+# Ignore files modified within the last 10 minutes (600 seconds)
+min_age_seconds = 600
+ignored_extensions = [".crdownload", ".part", ".tmp", ".download"]
+max_text_chars = 1000

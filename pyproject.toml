@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sloth-sort"
+version = "0.1.0"
+description = "A command-line tool that sorts messy folders using a local model."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "sloth-sort contributors" }
+]
+dependencies = [
+    "pypdf>=5.0.0",
+    "python-docx>=1.1.0",
+]
+
+[project.scripts]
+sloth-sort = "sloth_sort.cli:main"
