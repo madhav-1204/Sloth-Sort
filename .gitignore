@@ -9,3 +9,4 @@ plan.json
 undo_log.json
 .venv/
 venv/
+messy_test_dir/
