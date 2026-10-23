@@ -98,6 +98,9 @@ def _send_ollama_request(endpoint: str, model_name: str, prompt: str, timeout: i
         ) from e
 
 
+TEXT_READABLE_EXTENSIONS = {".txt", ".md", ".pdf", ".docx", ".csv"}
+
+
 def generate_file_plan(
     endpoint: str,
     model_name: str,
@@ -109,10 +112,13 @@ def generate_file_plan(
     """
     Query the local model for a descriptive file name and category folder.
     Retries once on invalid JSON. Returns (clean_new_name, target_folder, error_reason).
+    Only text-readable files (.txt, .md, .pdf, .docx, .csv) are renamed.
+    Binary and image files are never renamed and keep their original filename.
     """
     original_path = Path(filename)
     original_extension = original_path.suffix
     original_stem = original_path.stem
+    is_text_readable = original_extension.lower() in TEXT_READABLE_EXTENSIONS
 
     category_list_str = ", ".join(allowed_categories)
 
@@ -120,10 +126,12 @@ def generate_file_plan(
         f"You are a file organization assistant. Analyze this file:\n"
         f"Original filename: {filename}\n"
     )
-    if snippet:
+    if is_text_readable and snippet:
         base_prompt += f"First {len(snippet)} characters of content:\n\"\"\"\n{snippet}\n\"\"\"\n\n"
-    else:
+    elif is_text_readable:
         base_prompt += "No readable text content. Base your decision purely on the filename and file extension.\n\n"
+    else:
+        base_prompt += "Binary or media file. Base your decision purely on the filename and file extension.\n\n"
 
     base_prompt += (
         f"Tasks:\n"
@@ -136,9 +144,17 @@ def generate_file_plan(
         f"   - Documents: agreements, forms, spreadsheets, reports, generic docs\n"
         f"   - Media: audio, video, podcasts, music\n"
         f"   - Misc: only if it does not fit any of the above\n"
-        f"2. Suggest a clean, descriptive, human-readable file name (without extension or with same extension).\n"
-        f"Output MUST be strict JSON with exactly two string keys: 'new_name' and 'folder'. Do not include explanation."
     )
+    if is_text_readable:
+        base_prompt += (
+            f"2. Suggest a clean, descriptive, human-readable file name (without extension or with same extension).\n"
+            f"Output MUST be strict JSON with exactly two string keys: 'new_name' and 'folder'. Do not include explanation."
+        )
+    else:
+        base_prompt += (
+            f"2. Do not rename binary or image files. Keep 'new_name' exactly as '{filename}'.\n"
+            f"Output MUST be strict JSON with exactly two string keys: 'new_name' and 'folder'. Do not include explanation."
+        )
 
     for attempt in range(2):
         prompt = base_prompt if attempt == 0 else f"{base_prompt}\nReminder: output only valid JSON with 'new_name' and 'folder'."
@@ -158,12 +174,23 @@ def generate_file_plan(
             raw_new_name = parsed.get("new_name")
             raw_folder = parsed.get("folder")
 
-            if not raw_new_name or not isinstance(raw_new_name, str):
+            # Validate folder
+            if not raw_folder or not isinstance(raw_folder, str) or not raw_folder.strip():
+                if attempt == 0:
+                    continue
+                raw_folder = fallback_category
+
+            category = match_category(str(raw_folder).strip(), allowed_categories, fallback_category)
+
+            if not is_text_readable:
+                # For binary files and images, never rename. Always keep original filename.
+                cleaned_name = filename
+                return cleaned_name, category, None
+
+            if not raw_new_name or not isinstance(raw_new_name, str) or not raw_new_name.strip():
                 continue
 
             cleaned_name = clean_filename(raw_new_name, original_extension, original_stem)
-            category = match_category(str(raw_folder or ""), allowed_categories, fallback_category)
-
             return cleaned_name, category, None
         except (json.JSONDecodeError, ValueError):
             continue

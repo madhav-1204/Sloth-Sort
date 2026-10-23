@@ -132,7 +132,7 @@ def run_plan(args: argparse.Namespace) -> int:
     plan_path = Path.cwd() / "plan.json"
     save_plan(plan, plan_path)
     print(f"\nPlan saved to {plan_path.name}")
-    print("Run 'sloth-sort apply' to execute these changes.")
+    print("Run 'sloth-sort apply' to apply these changes.")
     return 0
 
 

@@ -181,9 +181,9 @@ def format_plan_table(plan: PlanResult) -> str:
     for action in plan.actions:
         rows.append((action.original_name, action.new_name, action.folder))
 
-    # Calculate column widths, capped for terminal readability
+    # Calculate column widths: col1 is sized to fit the longest new name without truncation
     col0_w = max(len(headers[0]), max(min(len(r[0]), 36) for r in rows))
-    col1_w = max(len(headers[1]), max(min(len(r[1]), 36) for r in rows))
+    col1_w = max(len(headers[1]), max(len(r[1]) for r in rows))
     col2_w = max(len(headers[2]), max(len(r[2]) for r in rows))
 
     def truncate(text: str, width: int) -> str:
@@ -202,7 +202,7 @@ def format_plan_table(plan: PlanResult) -> str:
     for orig, new, cat in rows:
         lines.append(
             f"| {truncate(orig, col0_w).ljust(col0_w)} "
-            f"| {truncate(new, col1_w).ljust(col1_w)} "
+            f"| {new.ljust(col1_w)} "
             f"| {cat.ljust(col2_w)} |"
         )
     lines.append(separator)
