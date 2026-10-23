@@ -47,6 +47,14 @@ class TestFilenameCleaning(unittest.TestCase):
         cleaned = clean_filename("...:::???", ".png", "screenshot")
         self.assertEqual(cleaned, "screenshot.png")
 
+    def test_very_long_filename_is_truncated(self):
+        long_stem = "a" * 200
+        cleaned = clean_filename(long_stem, ".txt", "original_long")
+        # clean_filename truncates stems to at most 120 chars
+        stem = cleaned[:-4]
+        self.assertLessEqual(len(stem), 120)
+        self.assertTrue(cleaned.endswith(".txt"))
+
 
 class TestCategoryMatching(unittest.TestCase):
     def test_exact_match(self):

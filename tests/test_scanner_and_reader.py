@@ -33,13 +33,16 @@ class TestScannerAndReader(unittest.TestCase):
     def test_scanner_skips_partial_downloads(self):
         partial = self.root / "installer.exe.crdownload"
         partial.write_text("in progress")
+        part_file = self.root / "archive.zip.part"
+        part_file.write_text("in progress part")
         old_time = time.time() - 1000
         os.utime(partial, (old_time, old_time))
+        os.utime(part_file, (old_time, old_time))
 
         eligible, skipped = scan_directory(self.root, min_age_seconds=600)
         self.assertEqual(len(eligible), 0)
-        self.assertEqual(len(skipped), 1)
-        self.assertIn("Incomplete download", skipped[0].reason)
+        self.assertEqual(len(skipped), 2)
+        self.assertTrue(all("Incomplete download" in s.reason for s in skipped))
 
     def test_scanner_skips_recently_modified_files(self):
         fresh = self.root / "downloading_now.pdf"

@@ -1,0 +1,412 @@
+{
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.3",
+    "cpu": "AMD Ryzen 5 7530U with Radeon Graphics",
+    "cpu_cores": "12",
+    "ram": "7.38 GB (7740728 KB)",
+    "gpu": "AMD Radeon (TM) Graphics",
+    "ollama_version": "0.35.1",
+    "os_caption": "Microsoft Windows 11 Home Single Language"
+  },
+  "models": {
+    "gemma3:1b": {
+      "model_name": "gemma3:1b",
+      "total_files": 40,
+      "eligible_files": 37,
+      "safety_skipped_count": 3,
+      "safety_skipped_files": [
+        {
+          "name": ".hidden_note.txt",
+          "reason": "Hidden file"
+        },
+        {
+          "name": "movie_trailer_teaser.mp4.crdownload",
+          "reason": "Incomplete download / temporary file"
+        },
+        {
+          "name": "recent_download_note.txt",
+          "reason": "Modified recently (597s ago, cooldown 1m)"
+        }
+      ],
+      "total_time_seconds": 62.15,
+      "avg_seconds_per_file": 1.68,
+      "correct_count": 26,
+      "accuracy_percent": 70.3,
+      "wrong_files": [
+        {
+          "filename": "data_analysis_export_q3.csv",
+          "expected": "Documents",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "DockerDesktop-4.32.0-universal.dmg",
+          "expected": "Installers",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "download (1).csv",
+          "expected": "Invoices",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "final_v2_REAL_final.txt",
+          "expected": "Documents",
+          "proposed": "Study"
+        },
+        {
+          "filename": "flight_booking_LH492.txt",
+          "expected": "Documents",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "graphic_banner_mockup (copy).png",
+          "expected": "Photos",
+          "proposed": "Media"
+        },
+        {
+          "filename": "IMG_20261003_1.txt",
+          "expected": "Invoices",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "scan_receipt_09.txt",
+          "expected": "Invoices",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "Screenshot_2026-10-22_114002.png",
+          "expected": "Photos",
+          "proposed": "Media"
+        },
+        {
+          "filename": "uber_trip_receipt_102026.txt",
+          "expected": "Invoices",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "vlc_media_player_3.0.20_setup.exe",
+          "expected": "Installers",
+          "proposed": "Media"
+        }
+      ],
+      "invalid_json_count": 1,
+      "fixed_by_retry_count": 1,
+      "skipped_by_model_error_count": 0,
+      "text_renames": [
+        {
+          "original": "apartment_lease_agreement_signed.docx",
+          "proposed": "LeaseAgreement.docx",
+          "category": "Documents"
+        },
+        {
+          "original": "aws_billing_invoice_2026_09.pdf",
+          "proposed": "aws_billing_invoice_2026_09.pdf",
+          "category": "Invoices"
+        },
+        {
+          "original": "billing_statement_oct2026.txt",
+          "proposed": "billing_statement_oct2026.txt",
+          "category": "Invoices"
+        },
+        {
+          "original": "biology_lab_report_draft.md",
+          "proposed": "biology_lab_report_draft.md",
+          "category": "Study"
+        },
+        {
+          "original": "calculus_midterm_review_ch4.md",
+          "proposed": "Calculus II Integration Techniques.md",
+          "category": "Study"
+        },
+        {
+          "original": "chem_hw_assignment3.txt",
+          "proposed": "OrganicChemistry_Problems_SN2.txt",
+          "category": "Study"
+        },
+        {
+          "original": "Copy of notes.docx",
+          "proposed": "Weekly Engineering Sync Meeting Notes.docx",
+          "category": "Documents"
+        },
+        {
+          "original": "data_analysis_export_q3.csv",
+          "proposed": "Engineering_Data_Analysis_Q3.csv",
+          "category": "Misc"
+        },
+        {
+          "original": "Document (3) final FINAL.txt",
+          "proposed": "Contract_Agreement.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "download (1).csv",
+          "proposed": "Income.csv",
+          "category": "Misc"
+        },
+        {
+          "original": "empty_scratch_file.txt",
+          "proposed": "empty_scratch_file.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "final_v2_REAL_final.txt",
+          "proposed": "Experience.txt",
+          "category": "Study"
+        },
+        {
+          "original": "flight_booking_LH492.txt",
+          "proposed": "Flight Booking Confirmation.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "IMG_20261003_1.txt",
+          "proposed": "Cappuccino_Toast_Receipt.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "meeting_notes_regarding_the_quarterly_budget_review_and_team_expansion_plans_for_q4_2026_final_draft_approved.txt",
+          "proposed": "Q4 Budget Review & Expansion.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "New Text Document.txt",
+          "proposed": "Grocery List.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "notas_de_reunion_en_espanol.txt",
+          "proposed": "Reunion_Project_Details.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "packing_list_japan_vacation.txt",
+          "proposed": "Japan Vacation Packing.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "quick_meeting_memo.txt",
+          "proposed": "Q4 Roadmap Priorities and Sprint Planning.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "recipe_grandma_apple_pie (1).txt",
+          "proposed": "Recipe_Apple_Pie.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "scan0007.pdf",
+          "proposed": "INV-49201_Invoice.pdf",
+          "category": "Invoices"
+        },
+        {
+          "original": "scan_receipt_09.txt",
+          "proposed": "Scan Receipt.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "sql_query_customer_churn.txt",
+          "proposed": "sql_query_customer_churn.txt",
+          "category": "Code"
+        },
+        {
+          "original": "uber_trip_receipt_102026.txt",
+          "proposed": "Uber Trip Receipt.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "untitled(2).md",
+          "proposed": "BST_Lecture_4.md",
+          "category": "Study"
+        }
+      ]
+    },
+    "gemma3:4b": {
+      "model_name": "gemma3:4b",
+      "total_files": 40,
+      "eligible_files": 38,
+      "safety_skipped_count": 2,
+      "safety_skipped_files": [
+        {
+          "name": ".hidden_note.txt",
+          "reason": "Hidden file"
+        },
+        {
+          "name": "movie_trailer_teaser.mp4.crdownload",
+          "reason": "Incomplete download / temporary file"
+        }
+      ],
+      "total_time_seconds": 484.68,
+      "avg_seconds_per_file": 12.75,
+      "correct_count": 32,
+      "accuracy_percent": 84.2,
+      "wrong_files": [
+        {
+          "filename": "apartment_lease_agreement_signed.docx",
+          "expected": "Documents",
+          "proposed": "Misc"
+        },
+        {
+          "filename": "biology_lab_report_draft.md",
+          "expected": "Study",
+          "proposed": "Documents"
+        },
+        {
+          "filename": "download (1).csv",
+          "expected": "Invoices",
+          "proposed": "Documents"
+        },
+        {
+          "filename": "New Text Document.txt",
+          "expected": "Misc",
+          "proposed": "Documents"
+        },
+        {
+          "filename": "packing_list_japan_vacation.txt",
+          "expected": "Misc",
+          "proposed": "Documents"
+        },
+        {
+          "filename": "recipe_grandma_apple_pie (1).txt",
+          "expected": "Misc",
+          "proposed": "Documents"
+        }
+      ],
+      "invalid_json_count": 0,
+      "fixed_by_retry_count": 0,
+      "skipped_by_model_error_count": 1,
+      "text_renames": [
+        {
+          "original": "apartment_lease_agreement_signed.docx",
+          "proposed": "apartment_lease_agreement_signed.docx",
+          "category": "Misc"
+        },
+        {
+          "original": "aws_billing_invoice_2026_09.pdf",
+          "proposed": "aws_billing_invoice_2026_09.pdf",
+          "category": "Invoices"
+        },
+        {
+          "original": "billing_statement_oct2026.txt",
+          "proposed": "Metropolitan Electric Company - Oct 2026 Bill.txt",
+          "category": "Invoices"
+        },
+        {
+          "original": "biology_lab_report_draft.md",
+          "proposed": "biology_lab_report_photosynthesis.md",
+          "category": "Documents"
+        },
+        {
+          "original": "calculus_midterm_review_ch4.md",
+          "proposed": "calculus_ii_midterm_review_ch4.md",
+          "category": "Study"
+        },
+        {
+          "original": "chem_hw_assignment3.txt",
+          "proposed": "Chem_201_Homework_3.txt",
+          "category": "Study"
+        },
+        {
+          "original": "Copy of notes.docx",
+          "proposed": "Engineering_Sync_Meeting_Notes_Q4.docx",
+          "category": "Documents"
+        },
+        {
+          "original": "data_analysis_export_q3.csv",
+          "proposed": "Engineering_Sales_Budget_Q3_Analysis.csv",
+          "category": "Documents"
+        },
+        {
+          "original": "Document (3) final FINAL.txt",
+          "proposed": "Acme Corporation - Jane Doe Employment Contract.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "download (1).csv",
+          "proposed": "financial_records_2026.csv",
+          "category": "Documents"
+        },
+        {
+          "original": "empty_scratch_file.txt",
+          "proposed": "Empty Scratch.txt",
+          "category": "Misc"
+        },
+        {
+          "original": "final_v2_REAL_final.txt",
+          "proposed": "Jane_Doe_Resume.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "flight_booking_LH492.txt",
+          "proposed": "Lufthansa_Flight_Booking_LH492.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "IMG_20261003_1.txt",
+          "proposed": "Blue Bottle Coffee Receipt - 2026-10-03.txt",
+          "category": "Invoices"
+        },
+        {
+          "original": "meeting_notes_regarding_the_quarterly_budget_review_and_team_expansion_plans_for_q4_2026_final_draft_approved.txt",
+          "proposed": "2026_Q4_Budget_Review_and_Team_Expansion_Minutes.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "New Text Document.txt",
+          "proposed": "weekly_grocery_list.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "notas_de_reunion_en_espanol.txt",
+          "proposed": "acta_reunion_proyecto_2026.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "packing_list_japan_vacation.txt",
+          "proposed": "japan_vacation_packing_list.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "quick_meeting_memo.txt",
+          "proposed": "Q4_Roadmap_Memo_2026.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "recent_download_note.txt",
+          "proposed": "project_notes_3pm_meeting.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "recipe_grandma_apple_pie (1).txt",
+          "proposed": "grandma_apple_pie_recipe.txt",
+          "category": "Documents"
+        },
+        {
+          "original": "scan0007.pdf",
+          "proposed": "INV-49201_2026-09-15.pdf",
+          "category": "Invoices"
+        },
+        {
+          "original": "scan_receipt_09.txt",
+          "proposed": "blue_bottle_coffee_receipt_2026-10-04.txt",
+          "category": "Invoices"
+        },
+        {
+          "original": "sql_query_customer_churn.txt",
+          "proposed": "monthly_customer_retention_query.txt",
+          "category": "Code"
+        },
+        {
+          "original": "uber_trip_receipt_102026.txt",
+          "proposed": "uber_receipt_october_18_2026.txt",
+          "category": "Invoices"
+        },
+        {
+          "original": "untitled(2).md",
+          "proposed": "CS101_Lecture4_BST.md",
+          "category": "Study"
+        }
+      ]
+    }
+  }
+}

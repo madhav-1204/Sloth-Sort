@@ -1,0 +1,8 @@
+-- Analytical query to calculate monthly user retention and churn
+WITH monthly_cohort AS (
+    SELECT user_id, date_trunc('month', created_at) AS signup_month
+    FROM users
+)
+SELECT signup_month, count(distinct user_id) as total_users
+FROM monthly_cohort
+GROUP BY 1 ORDER BY 1 DESC;

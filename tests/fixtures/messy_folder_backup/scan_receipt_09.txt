@@ -1,0 +1,6 @@
+Blue Bottle Coffee Receipt
+Date: 2026-10-04
+Item: Cold Brew $5.50, Croissant $9.00
+Subtotal: $14.50
+Total Paid with Visa: $14.50
+Thank you for visiting!

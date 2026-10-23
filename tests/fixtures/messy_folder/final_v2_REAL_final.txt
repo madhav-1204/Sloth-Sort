@@ -1,0 +1,6 @@
+Jane Doe - Senior Systems Engineer
+Email: jane.doe@example.com | Phone: 555-0199
+Experience:
+- Staff Infrastructure Engineer, CloudScale Inc (2022-Present)
+- Senior Distributed Systems Developer (2018-2022)
+Skills: Python, Go, Kubernetes, Linux kernel internals, Distributed consensus.

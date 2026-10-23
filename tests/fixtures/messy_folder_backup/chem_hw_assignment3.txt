@@ -1,0 +1,4 @@
+Chemistry 201: Organic Chemistry Homework 3
+Professor Williams - Due Friday 5:00 PM
+Problem 1: Draw the major SN2 reaction product for 1-bromobutane with sodium hydroxide.
+Problem 2: Explain why tertiary alkyl halides prefer SN1 mechanisms over SN2 due to steric hindrance.

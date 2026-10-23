@@ -1,0 +1,7 @@
+Internal Memo
+To: Engineering Team
+From: Sarah Jenkins, VP of Engineering
+Subject: Q4 Roadmap Priorities and Sprint Planning
+Date: October 20, 2026
+
+Please review the attached project schedule before tomorrow's kickoff session.

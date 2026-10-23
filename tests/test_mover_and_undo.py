@@ -80,6 +80,12 @@ class TestMoverAndUndo(unittest.TestCase):
         # Undo log removed after complete reversal
         self.assertFalse(self.undo_log_path.exists())
 
+        # Running undo a second time does not break or delete anything
+        with self.assertRaises(FileNotFoundError):
+            revert_undo_log(self.undo_log_path)
+        self.assertTrue(self.file1.exists())
+        self.assertTrue(self.file2.exists())
+
     def test_security_prevents_escape_outside_target_folder(self):
         outside_file = self.root.parent / "sensitive.txt"
         plan = PlanResult(
@@ -102,6 +108,55 @@ class TestMoverAndUndo(unittest.TestCase):
         self.assertEqual(success, 0)
         self.assertEqual(skipped, 1)
         self.assertIn("path outside target folder", errors[0])
+
+    def test_security_prevents_destination_escape_outside_target_folder(self):
+        plan = PlanResult(
+            target_dir=str(self.root),
+            model_name="test_model",
+            created_at=time.time(),
+            actions=[
+                PlanAction(
+                    original_path=str(self.file1),
+                    original_name=self.file1.name,
+                    target_path=str(self.root.parent / "escaped.txt"),
+                    new_name="escaped.txt",
+                    folder="..",
+                    size_bytes=len("Invoice details"),
+                )
+            ],
+            skipped=[],
+        )
+        success, skipped, errors = apply_plan(plan, self.undo_log_path)
+        self.assertEqual(success, 0)
+        self.assertEqual(skipped, 1)
+        self.assertIn("path outside target folder", errors[0])
+        # Original file is preserved and never deleted
+        self.assertTrue(self.file1.exists())
+
+    def test_never_deletes_files_when_source_missing_or_corrupt(self):
+        non_existent = self.root / "ghost_file.txt"
+        plan = PlanResult(
+            target_dir=str(self.root),
+            model_name="test_model",
+            created_at=time.time(),
+            actions=[
+                PlanAction(
+                    original_path=str(non_existent),
+                    original_name="ghost_file.txt",
+                    target_path=str(self.root / "Misc" / "ghost_file.txt"),
+                    new_name="ghost_file.txt",
+                    folder="Misc",
+                    size_bytes=0,
+                )
+            ],
+            skipped=[],
+        )
+        success, skipped, errors = apply_plan(plan, self.undo_log_path)
+        self.assertEqual(success, 0)
+        self.assertEqual(skipped, 1)
+        self.assertIn("source file no longer exists", errors[0])
+        self.assertTrue(self.file1.exists())
+        self.assertTrue(self.file2.exists())
 
 
 if __name__ == "__main__":

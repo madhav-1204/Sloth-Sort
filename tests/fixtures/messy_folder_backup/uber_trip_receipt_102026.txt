@@ -1,0 +1,6 @@
+Uber Trip Receipt
+Total: $28.40
+Date: October 18, 2026 8:15 PM
+Trip: SFO International Airport Terminal 2 to Downtown Hotel
+Driver: Carlos (Toyota Prius)
+Payment: Apple Pay (Mastercard ending 4410)

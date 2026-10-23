@@ -1,0 +1,5 @@
+Quarter,Department,BudgetAllocated,ActualSpend,Variance
+Q1,Engineering,1500000,1420000,80000
+Q2,Engineering,1600000,1580000,20000
+Q3,Engineering,1650000,1630000,20000
+Q3,Sales,800000,815000,-15000

@@ -1,0 +1,6 @@
+Lufthansa Booking Confirmation
+Passenger: John Doe
+Booking Reference: LH-882193
+Flight: LH492 Frankfurt (FRA) to New York (JFK)
+Departure: 2026-11-12 10:45 AM | Seat: 14A (Window)
+Baggage Allowance: 1 checked bag included.

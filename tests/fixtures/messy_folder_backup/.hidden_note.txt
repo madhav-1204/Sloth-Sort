@@ -1,0 +1,1 @@
+Internal hidden notes file that the scanner must skip automatically.
